@@ -1,0 +1,9 @@
+services:
+  wp_product.product_price_listener:
+    class: WP\ProductBundle\EventListener\ProductPriceListener
+    tags:
+      - { name: doctrine.event_listener, event: prePersist }
+      - { name: doctrine.event_listener, event: preUpdate }
+#    wp_product.example:
+#        class: WP\ProductBundle\Example
+#        arguments: [@service_id, "plain_value", %parameter%]

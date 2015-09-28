@@ -1,0 +1,343 @@
+<div id="catalog-popup" class="catalog-popup" style="display: block;">
+    <div class="catalog-popup-content">
+        <div class="catalog-popup-poduct">
+            <div class="catalog-popup-image">
+                <div class="catalog-popup-big-image js-big-image">
+                    <img src="{% path product.cover, 'ajax_medium' %}" alt="">
+                </div>
+                {% if product.images|length>0 %}
+                    <div class="catalog-popup-image-slider-wrap">
+                        <ul class="catalog-popup-image-slider">
+                            <li class="catalog-popup-image-slider-item checked"><a href="{% path product.cover, 'ajax_medium' %}"><img src="{% path product.cover, 'small' %}" alt=""></a></li>
+                            {% for image in product.images %}
+                                <li class="catalog-popup-image-slider-item"><a href="{% path image.image, 'ajax_medium' %}"><img src="{% path image.image, 'small' %}" alt=""></a></li>
+                            {% endfor %}
+                        </ul>
+                    </div>
+                {% endif %}
+            </div>
+            <div class="catalog-popup-info">
+                <div class="catalog-popup-subtitle">{{ product.title }}</div>
+                <div class="catalog-popup-price"><span>{{ product.price }}</span> руб.</div>
+                <div class="catalog-popup-item-num">
+                    <input type="text" class="catalog-item-num-input input js-add-count-{{ product.id }}" value="1">
+                    <a href="#" class="catalog-item-num-plus js-num-plus"><span class="icon plus-icon"></span></a>
+                    <a href="#" class="catalog-item-num-minus js-num-minus"><span class="icon minus-icon"></span></a>
+                </div>
+                <a href="#" class="grad-button catalog-popup-button" onclick="cartAdd({{ product.id }});return false;"><span class="icon buy-icon js-add-btn-{{ product.id }} {% if cart.items[product.id] is defined %}inCart{% endif %}"></span> В КОРЗИНУ</a>
+
+                <div class="catalog-popup-info-description">
+                    <div class="catalog-popup-info-color">
+                        <div class="catalog-popup-info-color-title">
+                            Выберите цвет:
+                        </div>
+                        <ul class="catalog-popup-info-color-list">
+                            <li class="catalog-popup-info-color-item active"><img src="{% path product.cover, 'ajax_medium' %}" alt=""></li>
+                            {#<li class="catalog-popup-info-color-item"><img src="images/data/1.jpg" alt=""></li>
+                            <li class="catalog-popup-info-color-item"><img src="images/data/1.jpg" alt=""></li>#}
+                        </ul>
+                        <div class="catalog-popup-info-table">
+                            <table>
+                                <tbody>
+                                <tr>
+                                    <td>Артикул:</td>
+                                    <td>AL08224-1</td>
+                                </tr>
+                                <tr>
+                                    <td>Материал:</td>
+                                    <td>Акрил, ювелирный сплав, феониты</td>
+                                </tr>
+                                <tr>
+                                    <td>Размер:</td>
+                                    <td>46см</td>
+                                </tr>
+                                <tr>
+                                    <td>Цвет:</td>
+                                    <td>Серебристый</td>
+                                </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        {#<div class="recommend">
+            <div class="recommend-title">Также рекомендуем</div>
+            <div class="recommend-slider-wrap">
+                <div class="bx-wrapper" style="max-width: 784px; margin: 0px auto;">
+                    <div class="bx-viewport" style="width: 100%; overflow: hidden; position: relative; height: 196px;">
+                        <ul class="recommend-slider"
+                            style="width: 1015%; position: relative; transition-duration: 0s; transform: translate3d(-784px, 0px, 0px);">
+                            <li class="recommend-slider-item bx-clone"
+                                style="float: left; list-style: none; position: relative; width: 195px;">
+                                <div class="recommend-slider-item-image"><a href="#"><img src="images/data/13.jpg"
+                                                                                          alt=""></a></div>
+                                <div class="recommend-slider-item-title">
+                                    <a href="#">Комплект - AL08224-1</a>
+                                </div>
+                                <div class="recommend-slider-item-bottom clearfix">
+                                    <div class="recommend-slider-item-price">
+                                        <span>1 850</span> руб.
+                                    </div>
+                                    <a href="#" class="grad-button catalog-item-button"><span
+                                                class="icon buy-icon"></span></a>
+                                </div>
+                            </li>
+                            <li class="recommend-slider-item bx-clone"
+                                style="float: left; list-style: none; position: relative; width: 195px;">
+                                <div class="recommend-slider-item-image"><a href="#"><img src="images/data/14.jpg"
+                                                                                          alt=""></a></div>
+                                <div class="recommend-slider-item-title">
+                                    <a href="#">Украшения на бокал 2 шт. - UK00057-1</a>
+                                </div>
+                                <div class="recommend-slider-item-bottom clearfix">
+                                    <div class="recommend-slider-item-price">
+                                        <span>1 850</span> руб.
+                                    </div>
+                                    <a href="#" class="grad-button catalog-item-button"><span
+                                                class="icon buy-icon"></span></a>
+                                </div>
+                            </li>
+                            <li class="recommend-slider-item bx-clone"
+                                style="float: left; list-style: none; position: relative; width: 195px;">
+                                <div class="recommend-slider-item-image"><a href="#"><img src="images/data/15.jpg"
+                                                                                          alt=""></a></div>
+                                <div class="recommend-slider-item-title">
+                                    <a href="#">Комплект - AL08224-1</a>
+                                </div>
+                                <div class="recommend-slider-item-bottom clearfix">
+                                    <div class="recommend-slider-item-price">
+                                        <span>1 850</span> руб.
+                                    </div>
+                                    <a href="#" class="grad-button catalog-item-button"><span
+                                                class="icon buy-icon"></span></a>
+                                </div>
+                            </li>
+                            <li class="recommend-slider-item bx-clone"
+                                style="float: left; list-style: none; position: relative; width: 196px;">
+                                <div class="recommend-slider-item-image"><a href="#"><img src="images/data/16.jpg"
+                                                                                          alt=""></a></div>
+                                <div class="recommend-slider-item-title">
+                                    <a href="#">Украшения на бокал 2 шт. - UK00057-1</a>
+                                </div>
+                                <div class="recommend-slider-item-bottom clearfix">
+                                    <div class="recommend-slider-item-price">
+                                        <span>1 850</span> руб.
+                                    </div>
+                                    <a href="#" class="grad-button catalog-item-button"><span
+                                                class="icon buy-icon"></span></a>
+                                </div>
+                            </li>
+                            <li class="recommend-slider-item"
+                                style="float: left; list-style: none; position: relative; width: 195px;">
+                                <div class="recommend-slider-item-image"><a href="#"><img src="images/data/13.jpg"
+                                                                                          alt=""></a></div>
+                                <div class="recommend-slider-item-title">
+                                    <a href="#">Комплект - AL08224-1</a>
+                                </div>
+                                <div class="recommend-slider-item-bottom clearfix">
+                                    <div class="recommend-slider-item-price">
+                                        <span>1 850</span> руб.
+                                    </div>
+                                    <a href="#" class="grad-button catalog-item-button"><span
+                                                class="icon buy-icon"></span></a>
+                                </div>
+                            </li>
+                            <li class="recommend-slider-item"
+                                style="float: left; list-style: none; position: relative; width: 195px;">
+                                <div class="recommend-slider-item-image"><a href="#"><img src="images/data/14.jpg"
+                                                                                          alt=""></a></div>
+                                <div class="recommend-slider-item-title">
+                                    <a href="#">Украшения на бокал 2 шт. - UK00057-1</a>
+                                </div>
+                                <div class="recommend-slider-item-bottom clearfix">
+                                    <div class="recommend-slider-item-price">
+                                        <span>1 850</span> руб.
+                                    </div>
+                                    <a href="#" class="grad-button catalog-item-button"><span
+                                                class="icon buy-icon"></span></a>
+                                </div>
+                            </li>
+                            <li class="recommend-slider-item"
+                                style="float: left; list-style: none; position: relative; width: 195px;">
+                                <div class="recommend-slider-item-image"><a href="#"><img src="images/data/15.jpg"
+                                                                                          alt=""></a></div>
+                                <div class="recommend-slider-item-title">
+                                    <a href="#">Комплект - AL08224-1</a>
+                                </div>
+                                <div class="recommend-slider-item-bottom clearfix">
+                                    <div class="recommend-slider-item-price">
+                                        <span>1 850</span> руб.
+                                    </div>
+                                    <a href="#" class="grad-button catalog-item-button"><span
+                                                class="icon buy-icon"></span></a>
+                                </div>
+                            </li>
+                            <li class="recommend-slider-item"
+                                style="float: left; list-style: none; position: relative; width: 196px;">
+                                <div class="recommend-slider-item-image"><a href="#"><img src="images/data/16.jpg"
+                                                                                          alt=""></a></div>
+                                <div class="recommend-slider-item-title">
+                                    <a href="#">Украшения на бокал 2 шт. - UK00057-1</a>
+                                </div>
+                                <div class="recommend-slider-item-bottom clearfix">
+                                    <div class="recommend-slider-item-price">
+                                        <span>1 850</span> руб.
+                                    </div>
+                                    <a href="#" class="grad-button catalog-item-button"><span
+                                                class="icon buy-icon"></span></a>
+                                </div>
+                            </li>
+                            <li class="recommend-slider-item"
+                                style="float: left; list-style: none; position: relative; width: 195px;">
+                                <div class="recommend-slider-item-image"><a href="#"><img src="images/data/13.jpg"
+                                                                                          alt=""></a></div>
+                                <div class="recommend-slider-item-title">
+                                    <a href="#">Комплект - AL08224-1</a>
+                                </div>
+                                <div class="recommend-slider-item-bottom clearfix">
+                                    <div class="recommend-slider-item-price">
+                                        <span>1 850</span> руб.
+                                    </div>
+                                    <a href="#" class="grad-button catalog-item-button"><span
+                                                class="icon buy-icon"></span></a>
+                                </div>
+                            </li>
+                            <li class="recommend-slider-item"
+                                style="float: left; list-style: none; position: relative; width: 195px;">
+                                <div class="recommend-slider-item-image"><a href="#"><img src="images/data/14.jpg"
+                                                                                          alt=""></a></div>
+                                <div class="recommend-slider-item-title">
+                                    <a href="#">Украшения на бокал 2 шт. - UK00057-1</a>
+                                </div>
+                                <div class="recommend-slider-item-bottom clearfix">
+                                    <div class="recommend-slider-item-price">
+                                        <span>1 850</span> руб.
+                                    </div>
+                                    <a href="#" class="grad-button catalog-item-button"><span
+                                                class="icon buy-icon"></span></a>
+                                </div>
+                            </li>
+                            <li class="recommend-slider-item"
+                                style="float: left; list-style: none; position: relative; width: 195px;">
+                                <div class="recommend-slider-item-image"><a href="#"><img src="images/data/15.jpg"
+                                                                                          alt=""></a></div>
+                                <div class="recommend-slider-item-title">
+                                    <a href="#">Комплект - AL08224-1</a>
+                                </div>
+                                <div class="recommend-slider-item-bottom clearfix">
+                                    <div class="recommend-slider-item-price">
+                                        <span>1 850</span> руб.
+                                    </div>
+                                    <a href="#" class="grad-button catalog-item-button"><span
+                                                class="icon buy-icon"></span></a>
+                                </div>
+                            </li>
+                            <li class="recommend-slider-item"
+                                style="float: left; list-style: none; position: relative; width: 196px;">
+                                <div class="recommend-slider-item-image"><a href="#"><img src="images/data/16.jpg"
+                                                                                          alt=""></a></div>
+                                <div class="recommend-slider-item-title">
+                                    <a href="#">Украшения на бокал 2 шт. - UK00057-1</a>
+                                </div>
+                                <div class="recommend-slider-item-bottom clearfix">
+                                    <div class="recommend-slider-item-price">
+                                        <span>1 850</span> руб.
+                                    </div>
+                                    <a href="#" class="grad-button catalog-item-button"><span
+                                                class="icon buy-icon"></span></a>
+                                </div>
+                            </li>
+                            <li class="recommend-slider-item bx-clone"
+                                style="float: left; list-style: none; position: relative; width: 195px;">
+                                <div class="recommend-slider-item-image"><a href="#"><img src="images/data/13.jpg"
+                                                                                          alt=""></a></div>
+                                <div class="recommend-slider-item-title">
+                                    <a href="#">Комплект - AL08224-1</a>
+                                </div>
+                                <div class="recommend-slider-item-bottom clearfix">
+                                    <div class="recommend-slider-item-price">
+                                        <span>1 850</span> руб.
+                                    </div>
+                                    <a href="#" class="grad-button catalog-item-button"><span
+                                                class="icon buy-icon"></span></a>
+                                </div>
+                            </li>
+                            <li class="recommend-slider-item bx-clone"
+                                style="float: left; list-style: none; position: relative; width: 195px;">
+                                <div class="recommend-slider-item-image"><a href="#"><img src="images/data/14.jpg"
+                                                                                          alt=""></a></div>
+                                <div class="recommend-slider-item-title">
+                                    <a href="#">Украшения на бокал 2 шт. - UK00057-1</a>
+                                </div>
+                                <div class="recommend-slider-item-bottom clearfix">
+                                    <div class="recommend-slider-item-price">
+                                        <span>1 850</span> руб.
+                                    </div>
+                                    <a href="#" class="grad-button catalog-item-button"><span
+                                                class="icon buy-icon"></span></a>
+                                </div>
+                            </li>
+                            <li class="recommend-slider-item bx-clone"
+                                style="float: left; list-style: none; position: relative; width: 195px;">
+                                <div class="recommend-slider-item-image"><a href="#"><img src="images/data/15.jpg"
+                                                                                          alt=""></a></div>
+                                <div class="recommend-slider-item-title">
+                                    <a href="#">Комплект - AL08224-1</a>
+                                </div>
+                                <div class="recommend-slider-item-bottom clearfix">
+                                    <div class="recommend-slider-item-price">
+                                        <span>1 850</span> руб.
+                                    </div>
+                                    <a href="#" class="grad-button catalog-item-button"><span
+                                                class="icon buy-icon"></span></a>
+                                </div>
+                            </li>
+                            <li class="recommend-slider-item bx-clone"
+                                style="float: left; list-style: none; position: relative; width: 196px;">
+                                <div class="recommend-slider-item-image"><a href="#"><img src="images/data/16.jpg"
+                                                                                          alt=""></a></div>
+                                <div class="recommend-slider-item-title">
+                                    <a href="#">Украшения на бокал 2 шт. - UK00057-1</a>
+                                </div>
+                                <div class="recommend-slider-item-bottom clearfix">
+                                    <div class="recommend-slider-item-price">
+                                        <span>1 850</span> руб.
+                                    </div>
+                                    <a href="#" class="grad-button catalog-item-button"><span
+                                                class="icon buy-icon"></span></a>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="bx-controls bx-has-controls-direction">
+                        <div class="bx-controls-direction"><a class="bx-prev" href="">Prev</a><a class="bx-next"
+                                                                                                 href="">Next</a></div>
+                    </div>
+                </div>
+            </div>
+        </div>#}
+    </div>
+
+</div>
+
+<script type="text/javascript">
+    $(document).ready(function(){
+        $('.catalog-popup-image-slider').bxSlider({
+            pager: false,
+            slideWidth: 89,
+            slideMargin: 2,
+            minSlides: 2,
+            maxSlides: 3
+        });
+
+        $('.catalog-popup-image-slider-item').delegate('a','click',function(){
+            $(this).parent().parent().children().removeClass('checked');
+            $(this).parent().addClass('checked');
+            $('.js-big-image img').attr('src', $(this).attr('href'));
+            return false;
+        });
+    });
+
+</script>

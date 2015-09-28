@@ -1,0 +1,229 @@
+{% extends 'WPTemplateBundle::base.html.twig' %}
+
+{% block content %}
+    <div class="wrapper">
+        <div class="catalog-inner-page clearfix">
+            <div class="catalog-iner-wrap clearfix">
+                <aside class="sidebar">
+                    <ul class="sidebar-menu">
+                        {% for cat in categories %}
+                            <li class="{% if category.parent and cat.id == category.parent.id %}startActive{% endif %}">
+                                <a href="#">{{ cat.title }}</a>
+                                <ul class="dropDownSidebar-menu">
+                                    {% for child in cat.children %}
+                                        <li {% if child.id == category.id %}class="activeDrop"{% endif %}>
+                                            <a href="{{ path('catalog_list', {'id': child.id, 'slug': child.slug}) }}">{{ child.title }}</a>
+                                        </li>
+                                    {% endfor %}
+                                </ul>
+                            </li>
+                        {% endfor %}
+                    </ul>
+                    <div class="filters">
+                        <div class="filters-block">
+                            <div class="filters-title">
+                                ТИП:
+                            </div>
+                            <div class="filters-content">
+                                <div class="filters-check-item">
+                                    <input type="checkbox" id="filter1" checked="checked">
+                                    <label for="filter1">Стразовые в серебре</label>
+                                </div>
+                                <div class="filters-check-item">
+                                    <input type="checkbox" id="filter2">
+                                    <label for="filter2">Стразовые в золоте</label>
+                                </div>
+                                <div class="filters-check-item">
+                                    <input type="checkbox" id="filter3">
+                                    <label for="filter3">Жемчужные</label>
+                                </div>
+                                <div class="filters-check-item">
+                                    <input type="checkbox" id="filter4">
+                                    <label for="filter4">Цветочные</label>
+                                </div>
+                                <div class="filters-check-item">
+                                    <input type="checkbox" id="filter5">
+                                    <label for="filter5">Крупные</label>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="filters-block">
+                            <div class="filters-title">
+                                ЦЕНА:
+                            </div>
+                            <div class="filters-content fromto-block">
+                                <div class="fromto clearfix">
+                                    <div class="fromto-item">
+                                        <div class="input">
+                                            от
+                                            <input type="text" value="5500" class="fromto-item-val from">
+                                        </div>
+                                    </div>
+                                    <div class="fromto-item">
+                                        <div class="input">
+                                            до
+                                            <input type="text" value="17700" class="fromto-item-val to">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="filter-slider">
+                                    <div class="filter-slider-item">
+                                        <span class="filter-slider-min">0</span>
+                                        <span class="filter-slider-max">20000</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="filters-block">
+                            <div class="filters-title">
+                                ЦВЕТ:
+                            </div>
+                            <div class="filters-content">
+                                <ul class="colors-list">
+                                    <li class="colors-list-item"><span class="color-icon"
+                                                                       style="background-color: #FFFFFF"></span></li>
+                                    <li class="colors-list-item"><span class="color-icon"
+                                                                       style="background-color: #eff2f4"></span></li>
+                                    <li class="colors-list-item active"><span class="color-icon"
+                                                                              style="background-color: #ed1a3a"></span>
+                                    </li>
+                                    <li class="colors-list-item"><span class="color-icon"
+                                                                       style="background-color: #abecff"></span></li>
+                                    <li class="colors-list-item"><span class="color-icon"
+                                                                       style="background-color: #3c6ce4"></span></li>
+                                    <li class="colors-list-item"><span class="color-icon"
+                                                                       style="background-color: #c691f0"></span></li>
+                                    <li class="colors-list-item"><span class="color-icon"
+                                                                       style="background-color: #f7cc4d"></span></li>
+                                    <li class="colors-list-item"><span class="color-icon"
+                                                                       style="background-color: #4feedb"></span></li>
+                                    <li class="colors-list-item"><span class="color-icon"
+                                                                       style="background-color: #a7e351"></span></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    {# <div class="popular">
+                        <div class="popular-title">ПОПУЛЯРНЫЕ ТОВАРЫ</div>
+                        <ul class="popular-list">
+                            <li class="popular-item">
+                                <div class="popular-item-image"><a href="#"><img src="images/data/17.jpg" alt=""></a>
+                                </div>
+                                <div class="popular-item-title"><a href="#">Комплект - AL08224-1</a></div>
+                                <div class="popular-item-price"><span>1 850</span> руб.</div>
+                                <a href="#" class="grad-button catalog-item-button"><span class="icon buy-icon"></span></a>
+                            </li>
+                            <li class="popular-item">
+                                <div class="popular-item-image"><a href="#"><img src="images/data/18.jpg" alt=""></a>
+                                </div>
+                                <div class="popular-item-title"><a href="#">Комплект - AL08224-1</a></div>
+                                <div class="popular-item-price"><span>1 850</span> руб.</div>
+                            </li>
+                            <li class="popular-item">
+                                <div class="popular-item-image"><a href="#"><img src="images/data/19.jpg" alt=""></a>
+                                </div>
+                                <div class="popular-item-title"><a href="#">Комплект - AL08224-1</a></div>
+                                <div class="popular-item-price"><span>1 850</span> руб.</div>
+                            </li>
+                        </ul>
+                    </div>#}
+                </aside>
+                <div class="page-with-sidebar-content">
+                    <h1>{{ category.title }}</h1>
+
+                    <div class="catalog-filters clearfix top-filters">
+                        <a onClick="return false;" href="javascript:void(0);" class="filters-button">ФИЛЬТРЫ</a>
+
+                        <div class="catalog-filters-total">Товаров: <span>{{ category.products.count }}</span></div>
+                        <div class="catalog-filters-sort">
+                            {#<span class="hide-on-mobile">Сортировать по: </span>
+
+                            <div class="catalog-filters-block">
+                                <div class="catalog-filters-block-val">
+                                    <a onClick="return false;" href="javascript:void(0);">новизне</a><span
+                                            class="icon sorting-icon down-icon"></span>
+                                </div>
+                                <ul class="catalog-filters-list">
+                                    <li class="active"><a onClick="return false;" href="javascript:void(0);">новизне</a><span
+                                                class="icon sorting-icon down-icon"></span></li>
+                                    <li><a onClick="return false;" href="javascript:void(0);">популярности</a><span
+                                                class="icon sorting-icon down-icon"></span></li>
+                                    <li><a onClick="return false;" href="javascript:void(0);">цене</a><span
+                                                class="icon sorting-icon down-icon"></span></li>
+                                </ul>
+                            </div>#}
+                        </div>
+                        <div class="catalog-filters-num">
+                            {#<span class="hide-on-mobile">Выводить по:</span>
+
+                            <div class="catalog-filters-block">
+                                <div class="catalog-filters-block-val">
+                                    <a onClick="return false;" href="javascript:void(0);">100</a>
+                                </div>
+                                <ul class="catalog-filters-list">
+                                    <li class="active"><a onClick="return false;" href="javascript:void(0);">50</a></li>
+                                    <li><a onClick="return false;" href="javascript:void(0);">100</a></li>
+                                    <li><a onClick="return false;" href="javascript:void(0);">все</a></li>
+                                </ul>
+                            </div>#}
+                        </div>
+                    </div>
+                    <div class="catalog">
+                        {% if category.products.count %}
+                            <ul class="catalog-list">
+                                {% for e in category.products %}
+                                <li class="catalog-item new">
+                                    <div class="catalog-item-image">
+                                        <div class="catalog-item-image-wrapper">
+                                                <img src="{% path e.cover, 'product_list' %}" alt="">
+                                        </div>
+                                        <a href="{{ path('product_ajax_view',{'id':e.id}) }}" class="fast-view fancybox fancybox.ajax">Быстрый просмотр</a>
+                                        <a href="{% path e.cover, 'product_list' %}" class="fast-view-image js-fancybox-image">
+                                            <span class="icon icon-lupe"></span>
+                                        </a>
+                                    </div>
+                                    <div class="catalog-item-title"><a href="#">{{ e.title }}</a></div>
+                                    <div class="catalog-item-price"><span>{{ e.price }}</span> руб.</div>
+                                    <div class="catalog-item-bottom">
+                                        <div class="catalog-item-num">
+                                            <input type="text" class="catalog-item-num-input input js-add-count-{{ e.id }}" value="1">
+                                            <a href="#" class="catalog-item-num-plus js-num-plus"><span
+                                                        class="icon plus-icon"></span></a>
+                                            <a href="#" class="catalog-item-num-minus js-num-minus"><span class="icon minus-icon"></span></a>
+                                        </div>
+                                        <a href="#" class="grad-button catalog-item-button" onclick="cartAdd({{ e.id }});return false;"><span
+                                                    class="icon buy-icon js-add-btn-{{ e.id }} {% if cart.items[e.id] is defined %}inCart{% endif %}"></span></a>
+                                    </div>
+                                </li>
+                                {% endfor %}
+                            </ul>
+                        {% endif %}
+                    </div>
+                   {# <div class="catalog-filters catalog-filters-bottom">
+                        <div class="catalog-filters-total">Товаров: <span>{{ category.products.count }}</span></div>
+                        <div class="catalog-filters-pagination">
+                            <a href="#" class="pagination-tobegin">В начало </a>
+                            <ul class="pagination">
+                                <li><a href="#">1</a></li>
+                                <li><a href="#">2</a></li>
+                                <li class="active"><a href="#">3</a></li>
+                                <li><a href="#">4</a></li>
+                                <li><a href="#">5</a></li>
+                                <li><a href="#">Дальше →</a></li>
+                            </ul>
+                        </div>
+                        <div class="catalog-filters-num">
+                            Выводить по:
+                            <ul class="catalog-filters-list">
+                                <li class="active"><a href="#">50</a></li>
+                                <li><a href="#">100</a></li>
+                                <li><a href="#">все</a></li>
+                            </ul>
+                        </div>
+                    </div>#}
+                    <div class="popular-holder"></div>
+                </div>
+
+            </div>
+        </div>
+{% endblock %}

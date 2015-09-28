@@ -1,0 +1,14 @@
+services:
+#    wp_category.example:
+#        class: WP\CategoryBundle\Example
+#        arguments: [@service_id, "plain_value", %parameter%]
+    wp.category.admin.user:
+        class: WP\CategoryBundle\Admin\CategoryAdmin
+        tags:
+            - { name: sonata.admin, manager_type: orm, group: Каталог продукции, label: Разделы каталога }
+        arguments:
+            - ~
+            - WP\CategoryBundle\Entity\Category
+            - ~
+        calls:
+            - { method: setTranslationDomain, arguments: [SonataAdminBundle]}

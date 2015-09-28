@@ -1,0 +1,19 @@
+services:
+  sonata.admin.product:
+        class: WP\ProductBundle\Admin\ProductAdmin
+        tags:
+            - { name: sonata.admin, manager_type: orm, group: Каталог продукции, label: Товары}
+        arguments:
+            - ~
+            - WP\ProductBundle\Entity\Product
+            - ~
+
+
+  sonata.admin.product2media:
+        class: WP\ProductBundle\Admin\Product2MediaAdmin
+        tags:
+            - { name: sonata.admin, manager_type: orm, show_in_dashboard: false}
+        arguments:
+            - ~
+            - WP\ProductBundle\Entity\Product2Media
+            - ~
